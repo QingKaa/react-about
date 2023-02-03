@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: zhaohaohua@bytegreen.cn
  * @Date: 2023-01-17 13:50:14
- * @LastEditors: zhaohaohua@bytegreen.cn
- * @LastEditTime: 2023-01-30 17:33:52
+ * @LastEditors: zhh_e
+ * @LastEditTime: 2023-02-03 10:59:51
  */
 import { createBrowserRouter } from "react-router-dom"
 import Root from "@/layout/root";
@@ -11,6 +11,7 @@ import ErrorPage from "@/layout/error/error"
 import HomePage from "@/views/home"
 import AboutPage from "@/views/about";
 import TodoList from "@/views/todo/todoList";
+import { Counter } from "@/features/counter/Counter";
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +27,9 @@ export const router = createBrowserRouter([
         }, {
             path: 'todo',
             element: <TodoList />
+        }, {
+            path: 'counter',
+            element: <Counter />
         }]
     }
 ]);
