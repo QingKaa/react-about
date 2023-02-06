@@ -2,11 +2,13 @@
  * @Description: 
  * @Author: zhaohaohua@bytegreen.cn 
  * @Date: 2023-01-30 17:29:29
- * @LastEditors: error: git config user.name && git config user.email & please set dead value or install git
- * @LastEditTime: 2023-02-06 11:52:43
+ * @LastEditors: 清咔 874518796@qq.com
+ * @LastEditTime: 2023-02-06 21:02:30
  */
 import PageHeader from "@/component/PageHeader";
 import { ChangeEventHandler, MouseEvent, MouseEventHandler, useState } from "react"
+import { changeStatus, addTodo, delTodo, selectTodoList } from "./todoSlice";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 
 const TodoItem = function (props: {
     item: { text: string; finish: boolean };
@@ -31,42 +33,39 @@ function AddBar(props: { confirm: Function }) {
     const [value, setValue] = useState('')
     return (
         <div className="wrap-bar flex">
-            <input className="border mr-1 flex-1" type="text" value={value} onChange={(e) => setValue(e.target.value)} placeholder="please input todo item" />
-            <button onClick={() => props.confirm(value)}>添加</button>
+            <input
+                className="border mr-1 flex-1 rounded px-1"
+                type="text"
+                value={value}
+                onChange={(e) => setValue(e.target.value)} placeholder="please input todo item" />
+            <button
+                className="border p-1 border-color-green rounded hover:bg-emerald hover:color-white"
+                onClick={() => props.confirm(value)}>
+                add
+            </button>
         </div>
     )
 }
 
 export default function TodoList() {
-    const [todoData, setTodoData] = useState([{ text: 'todo', finish: false }])
-
-    const onChangeItemState = (index: number) => {
-        const _todoData = todoData.slice()
-        _todoData[index].finish = !_todoData[index].finish
-        setTodoData(_todoData)
-    }
-
-    const addTodo = (value: string) => {
-        setTodoData(todoData.concat({ text: value, finish: false }))
-    }
+    const todoList = useAppSelector(selectTodoList)
+    const dipatch = useAppDispatch()
 
     const delItem = (e: MouseEvent, idx: number) => {
         e.stopPropagation()
         e.preventDefault()
-        let _todoData = todoData.slice()
-        _todoData.splice(idx, 1)
-        setTodoData(_todoData)
+        dipatch(delTodo(idx))
     }
 
-    const toDoList = todoData.map((it, idx) => {
-        return <TodoItem key={idx} item={it} delItem={(e) => delItem(e, idx)} onChange={() => onChangeItemState(idx)} />
+    const toDoList = todoList.map((it, idx) => {
+        return <TodoItem key={idx} item={it} delItem={(e) => delItem(e, idx)} onChange={() => dipatch(changeStatus({ index: idx, toStatus: !it.finish }))} />
     })
 
     return (
         <div className="h-full overflow-y-auto">
             <PageHeader title="Todo" />
             <div className="w-prose mx-auto pl-4 mb-2">
-                <AddBar confirm={addTodo} />
+                <AddBar confirm={(value: string) => dipatch(addTodo({ text: value, finish: false }))} />
             </div>
             <ul className="todo-list" pl-4 w-prose mx-auto>
                 {toDoList}

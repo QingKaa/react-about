@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: zhaohaohua@bytegreen.cn
  * @Date: 2023-01-16 16:52:37
- * @LastEditors: zhaohaohua@bytegreen.cn
- * @LastEditTime: 2023-01-30 11:14:19
+ * @LastEditors: 清咔 874518796@qq.com
+ * @LastEditTime: 2023-02-06 21:13:29
  */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
@@ -11,14 +11,18 @@ import '@unocss/reset/tailwind.css'
 import 'uno.css'
 import { RouterProvider } from "react-router-dom"
 import { router } from "@/routes/index"
-import store from "./app/store"
+// import store from "./app/store"
+import { store, persistor } from "./app/store"
+import { PersistGate } from "redux-persist/integration/react"
 import { Provider } from "react-redux"
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
         <Provider store={store}>
-            <RouterProvider router={router} />
+            <PersistGate loading={null} persistor={persistor}>
+                <RouterProvider router={router} />
+            </PersistGate>
         </Provider>
     </React.StrictMode>,
 )

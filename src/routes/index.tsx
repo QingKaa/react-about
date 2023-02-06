@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: zhaohaohua@bytegreen.cn
  * @Date: 2023-01-17 13:50:14
- * @LastEditors: error: git config user.name && git config user.email & please set dead value or install git
- * @LastEditTime: 2023-02-06 11:41:35
+ * @LastEditors: 清咔 874518796@qq.com
+ * @LastEditTime: 2023-02-06 21:21:38
  */
 import { createBrowserRouter } from "react-router-dom"
 import Root from "@/layout/root";
