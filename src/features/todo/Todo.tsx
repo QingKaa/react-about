@@ -1,10 +1,11 @@
 /*
  * @Description: 
- * @Author: zhaohaohua@bytegreen.cn
+ * @Author: zhaohaohua@bytegreen.cn 
  * @Date: 2023-01-30 17:29:29
- * @LastEditors: zhaohaohua@bytegreen.cn
- * @LastEditTime: 2023-01-31 14:37:46
+ * @LastEditors: error: git config user.name && git config user.email & please set dead value or install git
+ * @LastEditTime: 2023-02-06 11:52:43
  */
+import PageHeader from "@/component/PageHeader";
 import { ChangeEventHandler, MouseEvent, MouseEventHandler, useState } from "react"
 
 const TodoItem = function (props: {
@@ -63,7 +64,7 @@ export default function TodoList() {
 
     return (
         <div className="h-full overflow-y-auto">
-            <h2 text-center font-bold text-xl>ToDo List</h2>
+            <PageHeader title="Todo" />
             <div className="w-prose mx-auto pl-4 mb-2">
                 <AddBar confirm={addTodo} />
             </div>
