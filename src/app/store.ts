@@ -1,7 +1,7 @@
 /*
  * @Date: 2023-02-06 09:37:46
  * @LastEditors: 清咔 874518796@qq.com
- * @LastEditTime: 2023-02-06 21:14:55
+ * @LastEditTime: 2023-02-08 22:19:49
  * @FilePath: \react-about\src\app\store.ts
  * @Description: Description here
  */
@@ -13,7 +13,8 @@ import storage from "redux-persist/lib/storage"
 
 const persistConfig = {
   key: 'root',
-  storage
+  storage,
+  whitelist: ["todo"]
 }
 
 const persistedReducer = persistReducer(
