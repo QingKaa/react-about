@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: zhaohaohua@bytegreen.cn 
  * @Date: 2023-01-30 17:29:29
- * @LastEditors: 清咔 874518796@qq.com
- * @LastEditTime: 2023-02-06 21:02:30
+ * @LastEditors: zhh_e
+ * @LastEditTime: 2023-02-09 11:41:00
  */
 import PageHeader from "@/component/PageHeader";
 import { ChangeEventHandler, MouseEvent, MouseEventHandler, useState } from "react"
@@ -49,23 +49,23 @@ function AddBar(props: { confirm: Function }) {
 
 export default function TodoList() {
     const todoList = useAppSelector(selectTodoList)
-    const dipatch = useAppDispatch()
+    const dispatch = useAppDispatch()
 
     const delItem = (e: MouseEvent, idx: number) => {
         e.stopPropagation()
         e.preventDefault()
-        dipatch(delTodo(idx))
+        dispatch(delTodo(idx))
     }
 
     const toDoList = todoList.map((it, idx) => {
-        return <TodoItem key={idx} item={it} delItem={(e) => delItem(e, idx)} onChange={() => dipatch(changeStatus({ index: idx, toStatus: !it.finish }))} />
+        return <TodoItem key={idx} item={it} delItem={(e) => delItem(e, idx)} onChange={() => dispatch(changeStatus({ index: idx, toStatus: !it.finish }))} />
     })
 
     return (
         <div className="h-full overflow-y-auto">
             <PageHeader title="Todo" />
             <div className="w-prose mx-auto pl-4 mb-2">
-                <AddBar confirm={(value: string) => dipatch(addTodo({ text: value, finish: false }))} />
+                <AddBar confirm={(value: string) => dispatch(addTodo({ text: value, finish: false }))} />
             </div>
             <ul className="todo-list" pl-4 w-prose mx-auto>
                 {toDoList}

@@ -3,7 +3,7 @@
  * @Author: zhaohaohua@bytegreen.cn
  * @Date: 2023-01-30 09:56:38
  * @LastEditors: zhh_e
- * @LastEditTime: 2023-02-03 14:17:50
+ * @LastEditTime: 2023-02-09 16:29:02
  */
 import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
@@ -12,7 +12,8 @@ export default function HeaderView() {
         { label: 'Home', path: '/home' },
         { label: 'About', path: '/about' },
         { label: 'Todo', path: '/todo' },
-        { label: 'Counter', path: '/counter' }
+        { label: 'Counter', path: '/counter' },
+        { label: 'Axios', path: '/axios' }
     ]
 
     const { pathname } = useLocation()
@@ -32,7 +33,7 @@ export default function HeaderView() {
     })
 
 
-    return (<div flex-1 h-full bg-teal-50 border-b flex items-center justify-between>
+    return (<div className="bg-while" flex-1 h-full border-b flex items-center justify-between>
         <div className="logo"></div>
         <ul className="head-nav" flex >
             {listItem}

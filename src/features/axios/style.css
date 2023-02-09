@@ -1,0 +1,6 @@
+.user-item:hover .user-avatar{
+    transform: scale(1.15);
+}
+.user-item:hover .user-tx-info{
+    display: flex;
+}
