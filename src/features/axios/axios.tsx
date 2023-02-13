@@ -3,9 +3,9 @@
  * @Author: zhh_e
  * @Date: 2023-02-09 15:32:30
  * @LastEditors: zhh_e
- * @LastEditTime: 2023-02-09 17:44:37
+ * @LastEditTime: 2023-02-13 11:52:51
  */
-import Http1 from "@/axios/request1"
+import requestMock from "@/axios/requestMock"
 import to from "await-to-js"
 import { useEffect, useState, useRef } from "react"
 import "./style.css"
@@ -35,7 +35,7 @@ export function Axios() {
     const [totalPage, setTotalPage] = useState(1)
 
     const fetchTs = async () => {
-        const [, res] = await to(Http1.get('api/users', { params: { page: curPage } }))
+        const [, res] = await to(requestMock.get('mock/userList', { params: { page: curPage } }))
         let result = res as ListResponse
         const { data = [], page, total_pages } = result || {}
         setTotalPage(total_pages || 0)

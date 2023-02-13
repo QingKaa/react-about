@@ -19,3 +19,13 @@ export interface RequestInterceptors {
 export interface RequestConfig extends AxiosRequestConfig {
     interceptors?: RequestInterceptors
 }
+
+interface Result {
+    code:number,
+    message: string,
+    success: boolean
+}
+
+export interface ResultData<T = any> extends Result {
+     data?: T
+}
