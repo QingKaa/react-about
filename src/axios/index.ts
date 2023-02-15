@@ -3,13 +3,12 @@
  * @Author: zhh_e
  * @Date: 2023-02-09 11:59:01
  * @LastEditors: zhh_e
- * @LastEditTime: 2023-02-13 11:00:24
+ * @LastEditTime: 2023-02-15 14:24:01
  */
 import axios from "axios"
 import type { AxiosInstance, AxiosRequestConfig } from "axios"
 import type { RequestConfig, RequestInterceptors, ResultData } from "./types"
 
-const methodList = ['post', 'get']
 class Request {
     instance: AxiosInstance
     interceptors?: RequestInterceptors

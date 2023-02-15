@@ -3,10 +3,12 @@
  * @Author: zhh_e
  * @Date: 2023-02-13 10:40:25
  * @LastEditors: zhh_e
- * @LastEditTime: 2023-02-13 12:01:43
+ * @LastEditTime: 2023-02-15 11:33:17
  */
 import { MockMethod } from "vite-plugin-mock"
 import Mock from "mockjs"
+import article from "./module/article"
+
 const Random = Mock.Random
 export default [
     {
@@ -26,5 +28,6 @@ export default [
                 ]
             }
         }
-    }
+    },
+    ...article
 ] as MockMethod[]
