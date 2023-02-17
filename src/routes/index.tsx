@@ -3,7 +3,7 @@
  * @Author: zhaohaohua@bytegreen.cn
  * @Date: 2023-01-17 13:50:14
  * @LastEditors: zhh_e
- * @LastEditTime: 2023-02-15 11:49:09
+ * @LastEditTime: 2023-02-17 10:31:51
  */
 import { createBrowserRouter } from "react-router-dom"
 import Root from "@/layout/root";
@@ -12,7 +12,7 @@ import HomePage from "@/features/home/Home"
 import AboutPage from "@/features/about/About";
 import Todo from "@/features/todo/Todo";
 import { Counter } from "@/features/counter/Counter";
-import { AxiosPage } from "@/features/axios/axios";
+import { AxiosPage } from "@/features/axiosPages/axios";
 
 export const router = createBrowserRouter([
     {

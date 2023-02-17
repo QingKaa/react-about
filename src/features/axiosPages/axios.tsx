@@ -3,7 +3,7 @@
  * @Author: zhh_e
  * @Date: 2023-02-09 15:32:30
  * @LastEditors: zhh_e
- * @LastEditTime: 2023-02-15 14:34:37
+ * @LastEditTime: 2023-02-17 10:42:52
  */
 import articleApi from "@/api/article/article"
 import freeReqApi from "@/api/reqres"
@@ -11,7 +11,6 @@ import to from "await-to-js"
 import { useEffect, useState, useRef } from "react"
 import { useImmer } from "use-immer"
 import "./style.css"
-import { ResultData } from "@/axios/types"
 interface user {
     avatar: string,
     email: string,
@@ -27,7 +26,6 @@ interface ListResponse {
     total?: number,
     total_pages?: number
 }
-
 
 type User = Partial<user>
 
@@ -100,32 +98,36 @@ function UserList() {
     )
 }
 
-interface articleItem {
-    title: string,
-    id: number,
-    des: string,
-    createTime: string
-}
+
 function ArticleList() {
-    const [articleList, setArticleList] = useState([] as articleItem[])
+    const [articleList, setArticleList] = useState([] as ArticleItem[])
 
     async function fetchArticles() {
         const [, res] = await to(articleApi.fetchArticleList())
-        console.log(' ====> res', res);
+        if (res && res.data) {
+            let list = res.data
+            setArticleList(list)
+        }
     }
-
 
     useEffect(() => {
         fetchArticles()
     }, [])
 
 
-    const ListItems = articleList.map((item: articleItem, idx) => {
-        return (<li key={idx}> <p>{item.title}</p> <p>{item.des}</p> </li>)
+    const ListItems = articleList.map((item: ArticleItem, idx) => {
+        return (
+            <li key={idx} className="flex mb-2">
+                <img className="mr-2 border b-green b-rounded" src={item.cover} alt="" />
+                <div>
+                    <p className="text-4 mb-1 font-bold">{item.title}</p>
+                    <p className="color-gray-500 text-2">{item.des}</p>
+                </div>
+            </li>)
     })
 
     return (
-        <ul> {ListItems} </ul>
+        <ul className="mx-20"> {ListItems} </ul>
     )
 }
 

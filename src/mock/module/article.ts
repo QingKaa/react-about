@@ -3,7 +3,7 @@
  * @Author: zhh_e
  * @Date: 2023-02-15 11:27:07
  * @LastEditors: zhh_e
- * @LastEditTime: 2023-02-15 11:50:47
+ * @LastEditTime: 2023-02-17 10:35:39
  */
 const articleList = {
     url:'/mock/article/list',
@@ -18,7 +18,8 @@ const articleList = {
                     "id|+1": true,
                     "title": "@cparagraph()",
                     "des": "@cparagraph(10)",
-                    "createTime":"@date(yyyy-MM-dd)"
+                    "createTime":"@date(yyyy-MM-dd)",
+                    "cover": "@image(100)"
                 }
             ]
         }
