@@ -3,7 +3,7 @@
  * @Author: zhh_e
  * @Date: 2023-02-09 15:32:30
  * @LastEditors: zhh_e
- * @LastEditTime: 2023-02-17 10:42:52
+ * @LastEditTime: 2023-02-27 09:40:54
  */
 import articleApi from "@/api/article/article"
 import freeReqApi from "@/api/reqres"
@@ -133,9 +133,9 @@ function ArticleList() {
 
 export function AxiosPage() {
     return (
-        <>
+        <div className="page-container">
             <UserList />
             <ArticleList />
-        </>
+        </div>
     )
 }
